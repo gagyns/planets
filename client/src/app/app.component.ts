@@ -8,7 +8,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    private http: HttpClient,
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.http.get('//localhost:3001/api/planets',
+      { withCredentials: true })
+      .subscribe(data => {
+        console.log('data >>', data);
+      });
+  }
 }
